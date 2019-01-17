@@ -10,6 +10,7 @@ class App extends Component {
                 <div className="menu">
                     <Header
                         tagline="Fresh Seafood Market"
+                        age={100}
                     />
                 </div>
                 <Order />
