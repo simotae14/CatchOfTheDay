@@ -8,8 +8,9 @@ class Fish extends Component {
             name,
             price,
             desc,
-            availability
+            status
         } = this.props.details;
+        const isAvailable = status === 'available';
         return (
             <li className="menu-fish">
                 <img src={image} alt={name} />
@@ -22,7 +23,7 @@ class Fish extends Component {
                 <p>
                     {desc}
                 </p>
-                <button>Add To Cart</button>
+                <button disabled={!isAvailable} onClick={() => this.props.addToOrder(this.props.index)}>{ isAvailable ? 'Add To Cart' : 'Sold out!' }</button>
             </li>
         );
     }
