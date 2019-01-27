@@ -8,7 +8,9 @@ class Order extends Component {
         // retrieve the number of items per fish in the order
         const count = this.props.order[key];
         // check if the fish is available
-        const isAvailable = fish.status === 'available';
+        const isAvailable = fish && fish.status === 'available';
+        // Make sure the fish is loaded before we contine
+        if (!fish) return null;
         if (!isAvailable) {
             return (
                 <li key={key}>
