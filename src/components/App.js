@@ -83,6 +83,7 @@ class App extends Component {
                 />
                 <Inventory
                     addFish={this.addFish}
+                    fishes={this.state.fishes}
                     loadSampleFishes={this.loadSampleFishes}
                  />
             </div>
