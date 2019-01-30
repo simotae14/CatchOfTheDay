@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 
 class EditFishForm extends Component {
+    handleChange = event => {
+        // update that fish
+        // 1. take a copy of the current fish
+        const updatedFish = {
+            ...this.props.fish,
+            [event.currentTarget.name]: event.currentTarget.value
+        };
+        this.props.updateFish(this.props.index, updatedFish);
+    }
     render() {
         const {
             name,
@@ -11,14 +20,37 @@ class EditFishForm extends Component {
         } = this.props.fish;
         return (
             <div className="fish-edit">
-                <input name="name" type="text" value={name} placeholder="Name" />
-                <input name="price" type="text" value={price} placeholder="Price" />
-                <select name="status" value={status}>
+                <input
+                    name="name"
+                    type="text"
+                    onChange={this.handleChange}
+                    value={name}
+                    placeholder="Name"
+                />
+                <input
+                    name="price"
+                    type="text"
+                    onChange={this.handleChange}
+                    value={price}
+                    placeholder="Price"
+                />
+                <select name="status" value={status} onChange={this.handleChange}>
                     <option value="available">Fresh!</option>
                     <option value="unavailable">Sold Out!</option>
                 </select>
-                <textarea name="desc" value={desc} placeholder="Desc"></textarea>
-                <input name="image" type="text" value={image} placeholder="Image" />
+                <textarea
+                    name="desc"
+                    onChange={this.handleChange}
+                    value={desc}
+                    placeholder="Desc"
+                ></textarea>
+                <input
+                    name="image"
+                    type="text"
+                    onChange={this.handleChange}
+                    value={image}
+                    placeholder="Image"
+                />
             </div>
         );
     }
