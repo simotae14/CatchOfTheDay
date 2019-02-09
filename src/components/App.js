@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
@@ -11,6 +12,9 @@ class App extends Component {
         fishes: {},
         order: {}
     };
+    static propTypes = {
+        match: PropTypes.object
+    }
     componentDidMount() {
         const { params } = this.props.match;
         // first reinstate our localStorage
@@ -20,16 +24,13 @@ class App extends Component {
                 order: JSON.parse(localStorageRef)
             });
         }
-        console.log(localStorageRef);
         this.ref = base.syncState(`${params.storeId}/fishes`, {
             context: this,
             state: 'fishes'
         });
     }
     componentDidUpdate() {
-        console.log(this.state.order);
         localStorage.setItem(this.props.match.params.storeId, JSON.stringify(this.state.order));
-        console.log('it updated');
     }
     componentWillUnmount() {
         base.removeBinding(this.ref);
