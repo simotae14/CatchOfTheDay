@@ -1,6 +1,9 @@
 Link NOW
 https://cotd-yyqwlavsfe.now.sh
 
+Link Netifly
+https://5c61c977999f0801745ed30b--startae14.netlify.com
+
 ## Available Scripts
 
 In the project directory, you can run:
